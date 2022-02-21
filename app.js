@@ -121,7 +121,35 @@ let activeIndex = 0
 
 
 
-for(let i = 0; i < SLIDES.length; i++) {
+// for(let i = 0; i < SLIDES.length; i++) {
+//     //creo gli li e li pusho in un array
+//     const liElement = document.createElement('li');
+//     liArr.push(liElement);
+//     UL.append(liElement);
+    
+//     //creo gli overlay
+//     let overlay = document.createElement('div')
+//     overlayArr.push(overlay)
+//     liElement.append(overlay);
+//     overlay.classList.add('item-overlay');
+    
+//     //creo il contenitore delle thumb
+//     const imgContElement = document.createElement('div');
+//     imgContElement.classList.add('img-container');
+//     liElement.append(imgContElement);
+
+//     // if(i > 0 ) {
+//     //     liArr.append(overlay);
+//     //     liarr[activeIndex].classList.add('active')
+
+//     // }
+//     // inserisco le immagini nelle thumb
+//     const imgElement = document.createElement('img');
+//     imgContElement.append(imgElement);
+//     imgElement.src = SLIDES[i].image; 
+// }
+
+SLIDES.forEach( ( el, index, array) => {
     //creo gli li e li pusho in un array
     const liElement = document.createElement('li');
     liArr.push(liElement);
@@ -138,16 +166,15 @@ for(let i = 0; i < SLIDES.length; i++) {
     imgContElement.classList.add('img-container');
     liElement.append(imgContElement);
 
-    // if(i > 0 ) {
-    //     liArr.append(overlay);
-    //     liarr[activeIndex].classList.add('active')
-
-    // }
     // inserisco le immagini nelle thumb
     const imgElement = document.createElement('img');
     imgContElement.append(imgElement);
-    imgElement.src = SLIDES[i].image; 
-}
+    imgElement.src = el.image; 
+} );
+
+
+
+
 
 // Assegno/rimuovo le classi "dimaniche"
 liArr[activeIndex].classList.add('active')
