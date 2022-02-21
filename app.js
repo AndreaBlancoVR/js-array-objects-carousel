@@ -149,7 +149,39 @@ let activeIndex = 0
 //     imgElement.src = SLIDES[i].image; 
 // }
 
+
+//      SOSTITUZIONE CICLO CON FOREACH
+
+// SLIDES.forEach( ( el, index, array) => {
+//     //creo gli li e li pusho in un array
+//     const liElement = document.createElement('li');
+//     liArr.push(liElement);
+//     UL.append(liElement);
+    
+//     //creo gli overlay
+//     let overlay = document.createElement('div')
+//     overlayArr.push(overlay)
+//     liElement.append(overlay);
+//     overlay.classList.add('item-overlay');
+    
+//     //creo il contenitore delle thumb
+//     const imgContElement = document.createElement('div');
+//     imgContElement.classList.add('img-container');
+//     liElement.append(imgContElement);
+
+//     // inserisco le immagini nelle thumb
+//     const imgElement = document.createElement('img');
+//     imgContElement.append(imgElement);
+//     imgElement.src = el.image; 
+// } );
+
+
+//      DESTRUTTURAZIONE
+
 SLIDES.forEach( ( el, index, array) => {
+
+    const { image } = el;
+
     //creo gli li e li pusho in un array
     const liElement = document.createElement('li');
     liArr.push(liElement);
@@ -169,7 +201,7 @@ SLIDES.forEach( ( el, index, array) => {
     // inserisco le immagini nelle thumb
     const imgElement = document.createElement('img');
     imgContElement.append(imgElement);
-    imgElement.src = el.image; 
+    imgElement.src = image; 
 } );
 
 
