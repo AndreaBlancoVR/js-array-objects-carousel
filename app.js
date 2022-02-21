@@ -1,27 +1,62 @@
 
-const items = [
-    'img/01.jpg',
-    'img/02.jpg',
-    'img/03.jpg',
-    'img/04.jpg',
-    'img/05.jpg'
-];
+// const items = [
+//     'img/01.jpg',
+//     'img/02.jpg',
+//     'img/03.jpg',
+//     'img/04.jpg',
+//     'img/05.jpg'
+// ];
 
-const title = [
-    'Svezia',
-    'Svizzera',
-    'Gran Bretagna',
-    'Germania',
-    'Paradise'
+// const title = [
+//     'Svezia',
+//     'Svizzera',
+//     'Gran Bretagna',
+//     'Germania',
+//     'Paradise'
+// ]
+
+// const text = [
+//     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+//     'Lorem ipsum',
+//     'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+//     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+//     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+// ]
+
+
+const SLIDES = [
+    {
+        image: 'img/01.jpg',
+        title: 'Svezia',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+    },
+    {
+        image: 'img/02.jpg',
+        title: 'Svizzera',
+        text: 'Lorem ipsum',
+    },
+    {
+        image: 'img/03.jpg',
+        title: 'Gran Bretagna',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    },
+    {
+        image: 'img/04.jpg',
+        title: 'Germania',
+        text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+    },
+    {
+        image: 'img/05.jpg',
+        title: 'Paradise',
+        text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+    },    
 ]
 
-const text = [
-    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-    'Lorem ipsum',
-    'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-    'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-]
+
+
+
+
+
 
 // CREO TUTTE LE VARIABILI NON DINAMICHE (E ANCHE QUALCUNA DI QUELLE DINAMICHE)
 
@@ -86,7 +121,7 @@ let activeIndex = 0
 
 
 
-for(let i = 0; i < items.length; i++) {
+for(let i = 0; i < SLIDES.length; i++) {
     //creo gli li e li pusho in un array
     const liElement = document.createElement('li');
     liArr.push(liElement);
@@ -111,7 +146,7 @@ for(let i = 0; i < items.length; i++) {
     // inserisco le immagini nelle thumb
     const imgElement = document.createElement('img');
     imgContElement.append(imgElement);
-    imgElement.src = items[i]; 
+    imgElement.src = SLIDES[i].image; 
 }
 
 // Assegno/rimuovo le classi "dimaniche"
@@ -119,22 +154,22 @@ liArr[activeIndex].classList.add('active')
 overlayArr[activeIndex].classList.remove('item-overlay')
 
 // inserisco immagine titolo e didascalia
-MAIN_IMG.src = items[activeIndex];
-IMG_TITLE.innerHTML = ( title[activeIndex] );
-IMG_CAPTION.innerHTML = ( text[activeIndex] ); 
+MAIN_IMG.src = SLIDES[activeIndex].image;
+IMG_TITLE.innerHTML = ( SLIDES[activeIndex].title );
+IMG_CAPTION.innerHTML = ( SLIDES[activeIndex].text ); 
 
 
 DOWN_ARROW.addEventListener('click', function() {
 
-    if(activeIndex < items.length - 1) {
+    if(activeIndex < SLIDES.length - 1) {
          liArr[activeIndex].classList.remove('active')
          overlayArr[activeIndex].classList.add('item-overlay')
          activeIndex++
          liArr[activeIndex].classList.add('active')
          overlayArr[activeIndex].classList.remove('item-overlay')
-         MAIN_IMG.src = items[activeIndex];
-        IMG_TITLE.innerHTML = ( title[activeIndex] );
-        IMG_CAPTION.innerHTML = ( text[activeIndex] );
+         MAIN_IMG.src = SLIDES[activeIndex].image;
+        IMG_TITLE.innerHTML = ( SLIDES[activeIndex].title );
+        IMG_CAPTION.innerHTML = ( SLIDES[activeIndex].text );
     } 
 } )
 
@@ -146,8 +181,8 @@ UP_ARROW.addEventListener('click', function() {
          activeIndex--
          liArr[activeIndex].classList.add('active')
          overlayArr[activeIndex].classList.remove('item-overlay')
-         MAIN_IMG.src = items[activeIndex];
-        IMG_TITLE.innerHTML = ( title[activeIndex] );
-        IMG_CAPTION.innerHTML = ( text[activeIndex] );
+         MAIN_IMG.src = SLIDES[activeIndex].image;
+        IMG_TITLE.innerHTML = ( SLIDES[activeIndex].title );
+        IMG_CAPTION.innerHTML = ( SLIDES[activeIndex].text );
     } 
 } )
